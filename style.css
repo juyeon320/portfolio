@@ -1,0 +1,171 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 40px;
+  background-color: #fdfdfd;
+}
+
+/* 인삿말 왼쪽 위치를 column.left와 맞춤 */
+.greeting-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto; /* 가운데 기준선 맞추기 */
+  padding-left: 0; /* 기본 여백 제거 */
+}
+
+.greeting-img {
+  display: block;
+  width: 100%;
+  max-width: 400px;  /* 이미지 폭 제한 */
+  height: auto;
+}
+
+
+.three-column-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 왼쪽 - 프로필 사진 */
+.photo-placeholder {
+  width: 80%;
+  padding-top: 80%;
+  border-radius: 10%;
+  background-color: #ccc;
+  background-image: url('profile.jpeg'); /* 실제 이미지가 있다면 설정 */
+  background-size: cover;
+  background-position: center;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* 각 영역 구분용 (선택) */
+.awards, .education, .experience, .skills, .projects {
+  padding: 20px;
+  background-color: #fff0f5;
+  border-radius: 10px;
+}
+
+.project-box {
+  padding: 20px;
+  background-color: #fff0f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.column.right {
+  height: 100%;
+}
+
+.project-box ul.project-list li {
+  padding: 14px 20px;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #ffe0e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.project-box ul.project-list li:hover {
+  background-color: #ffc1cc;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.right {
+  justify-content: space-between;
+}
+
+.full-height-box {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff0f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-list li {
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #ffe0e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.project-list li:hover {
+  background-color: #ffc1cc;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.bottom-aligned {
+  margin-top: auto;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+}
+
+
+
+.experience-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  
+}
+
+.info-img {
+  width: 80%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 16px;
+  
+}
+
+.award-img {
+  width: 100%;
+  max-width: 600px; /* 필요에 따라 500~600px 사이로 조절 */
+}
+
+.skill-img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  margin-top: 10px;
+}
