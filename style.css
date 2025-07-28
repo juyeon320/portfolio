@@ -335,7 +335,7 @@ ul {
   height: 80vh;        /* 높이: 화면의 80% */
   max-width: 1000px;  
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;
@@ -358,29 +358,26 @@ ul {
   width: 100%;
   height: 100%;
   transition: transform 0.4s ease-in-out;
-  scroll-snap-type: x mandatory;   /* 슬라이드 스냅 */
-  overflow-x: hidden;              /* 스크롤 영역 잘라냄 */
+  scroll-snap-type: x mandatory;   /* 슬라이드 스냅 */             /* 스크롤 영역 잘라냄 */
 }
 
 .card-slider a {
   flex: 0 0 100%;
-  min-width: 100%;                /* 강제로 정확히 100% */
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  scroll-snap-align: start;       /* 스냅 기준 */
+  scroll-snap-align: start; 
 }
+
 
 
 .slide-img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); 
-  border-radius: 12px;
+  display: block; /* ✅ */
 }
 .slide-img:hover {
   transform: scale(1.05); /* 살짝 더 크게 */
@@ -485,6 +482,11 @@ ul {
 
   .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
+  }
+
+  .nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+    color: #ff9aa2; /* 클릭시 더 진한 핑크 */
   }
 
 

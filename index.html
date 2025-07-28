@@ -71,11 +71,11 @@
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
       <div class="card-slider">
-        <a href="https://kiwi-almanac-f51.notion.site/2025-7-23e1cb7f0c438000ad64fe6de34149d8" target="_blank"><img src="우링.png" alt="우링" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-2025-23e1cb7f0c438016b91cc0ed7c04dbb8" target="_blank"><img src="강아지도.png" alt="강아지도" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2025-23e1cb7f0c438031993de6469c097889" target="_blank"><img src="포비아.png" alt="포비아" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c43800fa6a2ea893f47089a" target="_blank"><img src="푸닥.png" alt="푸닥" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c438018a66cc2fd784339ec" target="_blank"><img src="걷달.png" alt="걷달" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2025-7-23e1cb7f0c438000ad64fe6de34149d8" target="_blank"><img src="wooring.png" alt="우링" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-2025-23e1cb7f0c438016b91cc0ed7c04dbb8" target="_blank"><img src="gangazido.png" alt="강아지도" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2025-23e1cb7f0c438031993de6469c097889" target="_blank"><img src="phobia.png" alt="포비아" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c43800fa6a2ea893f47089a" target="_blank"><img src="poodoc.png" alt="푸닥" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c438018a66cc2fd784339ec" target="_blank"><img src="geotdal.png" alt="걷달" class="slide-img" /></a>
       </div>
       
       <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
@@ -131,7 +131,7 @@
   }
 
   function moveSlide(n) {
-    const slides = document.querySelectorAll('.slide-img');
+    const slides = document.querySelectorAll('.card-slider a');
     currentIndex = (currentIndex + n + slides.length) % slides.length;
     showSlide(currentIndex);
   }
