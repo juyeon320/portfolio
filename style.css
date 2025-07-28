@@ -2,7 +2,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 40px;
-  background-color: #fdfdfd;
+  background: linear-gradient(to bottom, #ffffff, #e1e1e1);
 }
 
 /* 인삿말 왼쪽 위치를 column.left와 맞춤 */
@@ -45,6 +45,93 @@ body {
   background-position: center;
 }
 
+.flip-card {
+  background-color: transparent;
+  width: 80%;
+  padding-top: 80%; /* 정사각형 비율 유지 */
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.flip-card-inner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10%;
+}
+
+.flip-card-front {
+  background-image: url('profile.jpeg'); /* 네 이미지 경로 */
+  background-size: cover;
+  background-position: center;
+}
+
+.flip-card-back {
+  font-family: 'Gowun Dodum', sans-serif;
+  background-color: #ffffff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: #333;
+  text-align: left;
+  font-weight: 500;
+}
+
+.flip-skill-card {
+  width: 100%;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-skill-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 66.66%; /* 3:2 비율 유지 */
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-skill-card:hover .flip-skill-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-skill-front,
+.flip-skill-back {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-skill-front img,
+.flip-skill-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.flip-skill-back {
+  transform: rotateY(180deg);
+}
+
+
 h3 {
   margin-bottom: 10px;
   color: #000000;
@@ -58,13 +145,13 @@ ul {
 /* 각 영역 구분용 (선택) */
 .awards, .education, .experience, .skills, .projects {
   padding: 20px;
-  background-color: #fff0f5;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
 .project-box {
   padding: 20px;
-  background-color: #fff0f5;
+  background-color: #ffffff00;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
@@ -73,24 +160,37 @@ ul {
   height: 100%;
 }
 
-.project-box ul.project-list li {
-  padding: 14px 20px;
-  list-style: none;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: #ffe0e6;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-}
-
 .project-box ul.project-list li:hover {
-  background-color: #ffc1cc;
+  background-color: #ffffff;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   transform: translateY(-2px);
 }
+
+.project-list li {
+  font-family: 'Gowun Dodum', sans-serif;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 각 프로젝트별 시그니처 색 + 투명도 */
+.project-list li.uring {
+  background-color: rgba(248, 202, 221, 0.2);
+}
+.project-list li.dogmap {
+  background-color: rgba(249, 232, 136, 0.2);
+}
+.project-list li.phobia {
+  background-color: rgba(178, 230, 161, 0.2);
+}
+.project-list li.poodak {
+  background-color: rgba(178, 228, 242, 0.2);
+}
+.project-list li.goddal {
+  background-color: rgba(207, 202, 242, 0.2);
+}
+
+
 
 .right {
   justify-content: space-between;
@@ -168,4 +268,73 @@ ul {
   max-width: 100%;
   border-radius: 0;
   margin-top: 10px;
+}
+
+.project-slider-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.project-slider {
+  position: relative;
+  width: 80%;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.project-card {
+  flex: 0 0 100%;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav.prev { left: 10px; }
+.nav.next { right: 10px; }
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
