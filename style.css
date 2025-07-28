@@ -441,6 +441,10 @@ ul {
   .slide-img {
     padding: 10px;
   }
+  .slide-img:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
 
   /* 화살표 위치 조정 */
   .prev-btn {
@@ -450,4 +454,34 @@ ul {
   .next-btn {
     right: 2vw;
   }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* 기존 hover도 유지 */
+  }
+  .nav-btn {
+    font-size: 36px;
+    z-index: 1001;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .prev-btn {
+    left: 2vw;
+    right: auto; /* ✅ 이거 꼭 넣어야 겹치지 않음 */
+  }
+
+  .next-btn {
+    right: 2vw;
+    left: auto;  /* ✅ 이것도 꼭 필요 */
+  }
 }
+

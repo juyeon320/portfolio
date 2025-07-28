@@ -95,6 +95,12 @@
     showSlide(currentIndex);
   }
 
+  document.querySelectorAll('.flip-card, .flip-skill-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
   function closeModal() {
     document.getElementById("projectModal").style.display = "none";
   }
