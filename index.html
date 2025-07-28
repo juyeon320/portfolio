@@ -89,6 +89,27 @@
 <script>
   let currentIndex = 0;
 
+  let startX = 0;
+
+  const slider = document.querySelector('.card-slider');
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        moveSlide(1); // 왼쪽으로 슬라이드 → 다음 카드
+      } else {
+        moveSlide(-1); // 오른쪽으로 슬라이드 → 이전 카드
+      }
+    }
+  });
+
   function openModal(index) {
     currentIndex = index;
     document.getElementById("projectModal").style.display = "flex";
