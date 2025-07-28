@@ -2,7 +2,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 40px;
-  background: linear-gradient(to bottom, #ffffff, #e1e1e1);
+  background: linear-gradient(to bottom, #ffffff, #e4e4e4);
 }
 
 /* 인삿말 왼쪽 위치를 column.left와 맞춤 */
@@ -400,3 +400,54 @@ ul {
 .prev-btn { left: 1vw; }
 .next-btn { right: 1vw; }
 
+
+@media (max-width: 768px) {
+  /* 세 칼럼 → 세로 정렬 */
+  .three-column-layout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  /* greeting 이미지 크기 축소 */
+  .greeting-img {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  /* 카드 뒤집기 효과 간단히 유지 */
+  .flip-card,
+  .flip-skill-card {
+    width: 100%;
+    padding-top: 100%; /* 정사각형 유지 */
+  }
+
+  /* 모달도 조금 더 여유롭게 */
+  .modal-content {
+    width: 95vw;
+    height: 80vh;
+  }
+
+  .nav-btn {
+    font-size: 36px;
+    left: 2vw;
+    right: 2vw;
+  }
+
+  .slide-img {
+    padding: 10px;
+  }
+
+  /* 화살표 위치 조정 */
+  .prev-btn {
+    left: 2vw;
+  }
+
+  .next-btn {
+    right: 2vw;
+  }
+}
