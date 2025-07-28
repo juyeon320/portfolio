@@ -270,34 +270,6 @@ ul {
   margin-top: 10px;
 }
 
-.project-slider-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.project-slider {
-  position: relative;
-  width: 80%;
-  max-width: 1000px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 40px 20px;
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
 .project-card {
   flex: 0 0 100%;
   height: 400px;
@@ -338,3 +310,93 @@ ul {
 .hidden {
   display: none;
 }
+
+/* 모달 */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  background: #ffffff00;
+  width: 80vw;         /* 너비: 화면의 80% */
+  height: 80vh;        /* 높이: 화면의 80% */
+  max-width: 1000px;  
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* 버튼 위치가 카드 위로 갈 경우 */
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10; /* << 추가 */
+  color: #333;  /* << 추가: 색상 명확히 */
+}
+
+.card-slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.card-slider a {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); 
+  border-radius: 12px;
+}
+.slide-img:hover {
+  transform: scale(1.05); /* 살짝 더 크게 */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 1001;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+  user-select: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.nav-btn:hover {
+  transform: translateY(-50%) scale(1.2); /* 살짝 커짐 */
+  color: #ffc1cc; /* 색상 강조 (핑크빛) */
+}
+
+.prev-btn { left: 1vw; }
+.next-btn { right: 1vw; }
+
