@@ -70,13 +70,35 @@
   <div id="projectModal" class="modal-overlay">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="project-name-tag" id="projectName">프로젝트 설명 들어가는 곳</div>
+      <div class="tech-stack-icons" id="techStack">
+        <!-- 여기에 아이콘 이미지들이 동적으로 들어갈 거야 -->
+      </div>    
       <div class="card-slider">
-        <a href="https://kiwi-almanac-f51.notion.site/2025-7-23e1cb7f0c438000ad64fe6de34149d8" target="_blank"><img src="wooring.png" alt="우링" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-2025-23e1cb7f0c438016b91cc0ed7c04dbb8" target="_blank"><img src="gangazido.png" alt="강아지도" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2025-23e1cb7f0c438031993de6469c097889" target="_blank"><img src="phobia.png" alt="포비아" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c43800fa6a2ea893f47089a" target="_blank"><img src="poodoc.png" alt="푸닥" class="slide-img" /></a>
-        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c438018a66cc2fd784339ec" target="_blank"><img src="geotdal.png" alt="걷달" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2025-7-23e1cb7f0c438000ad64fe6de34149d8" target="_blank">
+          <img src="wooring.png" alt="우링" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-2025-23e1cb7f0c438016b91cc0ed7c04dbb8" target="_blank">
+          
+          <img src="gangazido.png" alt="강아지도" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2025-23e1cb7f0c438031993de6469c097889" target="_blank">
+          
+          <img src="phobia.png" alt="포비아" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c43800fa6a2ea893f47089a" target="_blank">
+          
+          <img src="poodoc.png" alt="푸닥" class="slide-img" /></a>
+        <a href="https://kiwi-almanac-f51.notion.site/2024-23e1cb7f0c438018a66cc2fd784339ec" target="_blank">
+          
+          <img src="geotdal.png" alt="걷달" class="slide-img" /></a>
       </div>
+
+      <div class="slider-indicators">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      
       
       <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
       <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
@@ -88,11 +110,54 @@
 
 <script>
   let currentIndex = 0;
-
   let startX = 0;
 
   const slider = document.querySelector('.card-slider');
+  const modal = document.getElementById("projectModal");
 
+  // 프로젝트 이름 배열
+const projectNames = [
+  "우링 - 결혼이주여성을 위한 커뮤니티 플랫폼",
+  "강아지도 - 반려견을 위한 지도 서비스",
+  "포비아 - 전화공포증 극복 시뮬레이터",
+  "푸닥 - AI 기반 대변 이미지 분석 앱",
+  "걷달 - 청소년을 위한 AR 만보기 앱"
+];
+
+const techStacks = [
+  ["react.svg"], // 우링
+  ["spring.png","react.svg" ], // 강아지도
+  ["next.svg"], // 포비아
+  ["flask.png"], // 푸닥
+  ["django.svg"]// 걷달
+];
+
+function showSlide(index) {
+  const slider = document.querySelector('.card-slider');
+  slider.style.transform = `translateX(-${index * 100}%)`;
+  updateDots(index);
+
+  // ✅ 이름 태그 업데이트
+  const nameTag = document.getElementById("projectName");
+  if (nameTag) {
+    nameTag.textContent = projectNames[index];
+  }
+
+  // 기술스택 아이콘
+  const techContainer = document.getElementById("techStack");
+  techContainer.innerHTML = ""; // 기존 아이콘 제거
+
+  techStacks[index].forEach(src => {
+    const img = document.createElement("img");
+    img.src = `${src}`; // icons 폴더 안에 넣어두면 돼
+    img.alt = src.split(".")[0];
+    techContainer.appendChild(img);
+  });
+}
+
+
+
+  // 모바일 터치 슬라이드
   slider.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
@@ -114,13 +179,34 @@
     currentIndex = index;
     document.getElementById("projectModal").style.display = "flex";
     showSlide(currentIndex);
-    showSlide(index); 
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function updateDots(index) {
+  document.querySelectorAll('.slider-indicators .dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+document.getElementById("projectModal").addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal-overlay")) {
+    closeModal();
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 카드 뒤집기 이벤트
   document.querySelectorAll('.flip-card, .flip-skill-card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
+    });
+  });
+
+  // dot 클릭 이벤트는 여기서 등록
+  document.querySelectorAll('.slider-indicators .dot').forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      showSlide(currentIndex);
     });
   });
 });
@@ -136,22 +222,27 @@
     showSlide(currentIndex);
   }
 
+    modal.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal-overlay")) closeModal();
+    });
 
-  function showSlide(index) {
-    const slider = document.querySelector('.card-slider');
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  let autoSlide = setInterval(() => moveSlide(1), 5000);
 
   document.getElementById("projectModal").addEventListener("mouseover", () => clearInterval(autoSlide));
   document.getElementById("projectModal").addEventListener("mouseleave", () => {
     autoSlide = setInterval(() => moveSlide(1), 5000);
   });
 
+  document.querySelectorAll('.flip-card, .flip-skill-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
 
-  document.getElementById("projectModal").addEventListener("click", (e) => {
-  if (e.target.classList.contains("modal-overlay")) closeModal();
-});
+    // 전역 함수 등록 (HTML에서 쓸 수 있도록)
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.moveSlide = moveSlide;
+
+
 
 </script>
