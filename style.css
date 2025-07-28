@@ -107,7 +107,12 @@ body {
   transform-style: preserve-3d;
 }
 
+/*
 .flip-skill-card:hover .flip-skill-inner {
+  transform: rotateY(180deg);
+}
+*/
+.flip-skill-card.flipped .flip-skill-inner {
   transform: rotateY(180deg);
 }
 
@@ -353,15 +358,20 @@ ul {
   width: 100%;
   height: 100%;
   transition: transform 0.4s ease-in-out;
+  scroll-snap-type: x mandatory;   /* 슬라이드 스냅 */
+  overflow-x: hidden;              /* 스크롤 영역 잘라냄 */
 }
 
 .card-slider a {
   flex: 0 0 100%;
+  min-width: 100%;                /* 강제로 정확히 100% */
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: start;       /* 스냅 기준 */
 }
+
 
 .slide-img {
   max-width: 100%;
@@ -399,6 +409,16 @@ ul {
 
 .prev-btn { left: 1vw; }
 .next-btn { right: 1vw; }
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-skill-card:hover .flip-skill-inner {
+    transform: rotateY(180deg);
+  }
+}
+
 
 
 @media (max-width: 768px) {
@@ -459,10 +479,10 @@ ul {
     transform: rotateY(180deg);
   }
 
-    /* 기존 hover */
+  /* 
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-  }
+  }*/
 
   /* 추가: 클릭 시 플립 */
   .flip-card.flipped .flip-card-inner {
