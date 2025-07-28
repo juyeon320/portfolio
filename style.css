@@ -458,10 +458,22 @@ ul {
   .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
   }
-  
+
+    /* 기존 hover */
   .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* 기존 hover도 유지 */
+    transform: rotateY(180deg);
   }
+
+  /* 추가: 클릭 시 플립 */
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* 스킬 카드도 동일하게 */
+  .flip-skill-card.flipped .flip-skill-inner {
+    transform: rotateY(180deg);
+  }
+
   .nav-btn {
     font-size: 36px;
     z-index: 1001;
