@@ -114,13 +114,17 @@
     currentIndex = index;
     document.getElementById("projectModal").style.display = "flex";
     showSlide(currentIndex);
+    showSlide(index); 
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.flip-card, .flip-skill-card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
   });
+});
+
 
   function closeModal() {
     document.getElementById("projectModal").style.display = "none";
